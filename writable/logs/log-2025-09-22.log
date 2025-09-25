@@ -1,0 +1,228 @@
+CRITICAL - 2025-09-22 21:54:06 --> ErrorException: simplexml_load_string(): Entity: line 7: parser error : XML declaration allowed only at the start of the document
+[Method: POST, Route: api/factura/consulta-ride]
+in APPPATH\Controllers\RideController.php on line 55.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'simplexml_load_string(): Entity: line 7: parser error : XML declaration allowed only at the start of the document', 'C:\\laragon\\www\\api_facturacion\\app\\Controllers\\RideController.php', 55)
+ 2 APPPATH\Controllers\RideController.php(55): simplexml_load_string('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<autorizacion>
+  <estado>AUTORIZADO</estado>
+  <numeroAutorizacion>2209202501055008077400110010010000000158192683812</numeroAutorizacion>
+  <fechaAutorizacion>2025-09-22T11:32:45-05:00</fechaAutorizacion>
+  <ambiente>PRUEBAS</ambiente>
+  <comprobante><?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.1.0"><infoTributaria><ambiente>1</ambiente><tipoEmision>1</tipoEmision><razonSocial>FALCONI PUNGUIL DIEGO GEOVANNY</razonSocial><nombreComercial>DAMISOFT</nombreComercial><ruc>0550080774001</ruc><claveAcceso>2209202501055008077400110010010000000158192683812</claveAcceso><codDoc>01</codDoc><estab>001</estab><ptoEmi>001</ptoEmi><secuencial>000000015</secuencial><dirMatriz>Latacunga</dirMatriz><contribuyenteRimpe>CONTRIBUYENTE RÉGIMEN RIMPE</contribuyenteRimpe></infoTributaria><infoFactura><fechaEmision>22/09/2025</fechaEmision><dirEstablecimiento>Latacunga</dirEstablecimiento><obligadoContabilidad>NO</obligadoContabilidad><tipoIdentificacionComprador>04</tipoIdentificacionComprador><razonSocialComprador>Linda Raquel Chavez Aguilar</razonSocialComprador><identificacionComprador>1805214572001</identificacionComprador><totalSinImpuestos>120</totalSinImpuestos><totalDescuento>0</totalDescuento><totalConImpuestos><totalImpuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><baseImponible>120</baseImponible><valor>18</valor></totalImpuesto></totalConImpuestos><importeTotal>138</importeTotal><moneda>DOLAR</moneda><pagos><pago><formaPago>01</formaPago><total>138</total><plazo>0</plazo><unidadTiempo>dias</unidadTiempo></pago></pagos></infoFactura><detalles><detalle><codigoPrincipal>001</codigoPrincipal><descripcion>Tablet Lenovo - Modelo 1020</descripcion><cantidad>4</cantidad><precioUnitario>30</precioUnitario><descuento>0</descuento><precioTotalSinImpuesto>120</precioTotalSinImpuesto><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><tarifa>15</tarifa><baseImponible>120</baseImponible><valor>18</valor></impuesto></impuestos></detalle></detalles><infoAdicional><campoAdicional nombre="EMAIL">cliente@correo.com</campoAdicional><campoAdicional nombre="DIRECCION">Av. Siempre Viva 123</campoAdicional></infoAdicional><ds:Signature Id="Signature271459" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#">
+<ds:SignedInfo Id="Signature-SignedInfo375709">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference Id="SignedPropertiesID347938" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature271459-SignedProperties502195">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>8NENpnKB91k56J3YsQjo3iyfSwo=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate143582">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>YEq6ejV2bQWZrEB8NrxshqUd2kQ=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-131771" URI="#comprobante">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>XKAXkSdghPXDozu3vsNbJo7STwI=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue478779">
+l+HAJFokcB0xVurNa3n11CU337V7+jPI4mRjmJv0SxEpIyB579iiVQ+5azL44r5XpcPXoXxpbEbQ
+ISf6/FdzMAILkMTLbFzwJa4/1IQWdYcy/j89bPkiR46j1HpET8o50AgPYnWQEmePeJWQ5PDdodwp
+Yu5AKx5JGqyOuOTMQxsrXjOef4Fmu0Pvy00CAwqL/ocvgf3Bpe0jEMtmYyEFWwt20DvKIovc3l7R
+tLmJCBu3GGem0oLMigrcIn0pylyDz5TuykdQm+n0q/iUntLlysy3L+jDUfUhDAxiA3M4WRG+BXJa
+1EqeLb8wKaTZXIXVr/HTHhQTXY8laVwYE8HRsA==
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate143582">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIKyDCCCLCgAwIBAgIEaii/1TANBgkqhkiG9w0BAQsFADCBmTELMAkGA1UEBhMCRUMxHTAbBgNV
+BAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJ
+T04gREUgSU5GT1JNQUNJT04xOTA3BgNVBAMMMEFVVE9SSURBRCBERSBDRVJUSUZJQ0FDSU9OIFNV
+QkNBLTIgU0VDVVJJVFkgREFUQTAeFw0yNTA1MDMyMjQyNDhaFw0yNjA1MDMyMjQyNDhaMIGpMScw
+JQYDVQQDDB5ESUVHTyBHRU9WQU5OWSBGQUxDT05JIFBVTkdVSUwxIDAeBgNVBAUTFzA1NTAwODA3
+NzQtMDMwNTI1MTc1MjQzMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5G
+T1JNQUNJT04xHTAbBgNVBAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMQswCQYDVQQGEwJFQzCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN0MqDK+td7uvjaEVS60wszWBmeOFMj6mss9wI4X
+jM08239/RM+z3HdZ0dHpdH+qJgucmFbiIDhLOcAlMq1g73dQSXoOpGRyXQqz0A/Sq+V7oQ3nVFdu
+0n6a+7bxKgj8hB94T3p9J8hBLWChrmcewQSVNujVssU1kdkvr8XaiMvB3XPr5XSCf+6rowFXTk9f
+frqmc8Qr4iPFfnrVBXziCciE/v6TEPBu5KYYBWRP8hWBxYFwa4QVH3oyCGcGn0v/+/794hBCRYrL
+3qm6j2RU141Ngx8RVetej6rEeGDCoQp6lj9iJ8XTwEQr7ogZts67LALmHtOylmrtBAN7XW/OaVUC
+AwEAAaOCBgQwggYAMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUjLrKEVd4JYAdawpLVb+NrmLd
+vY8wWQYIKwYBBQUHAQEETTBLMEkGCCsGAQUFBzABhj1odHRwOi8vb2NzcGd3LnNlY3VyaXR5ZGF0
+YS5uZXQuZWMvZWpiY2EvcHVibGljd2ViL3N0YXR1cy9vY3NwMCQGA1UdEQQdMBuBGWRpZWdvLmZh
+bGNvbmk5NkBnbWFpbC5jb20wggEGBgNVHSAEgf4wgfswWgYKKwYBBAGCpnICBzBMMEoGCCsGAQUF
+BwICMD4ePABDAGUAcgB0AGkAZgBpAGMAYQBkAG8AIABkAGUAIABQAGUAcgBzAG8AbgBhACAATgBh
+AHQAdQByAGEAbDCBnAYKKwYBBAGCpnICATCBjTCBigYIKwYBBQUHAgEWfmh0dHBzOi8vd3d3LnNl
+Y3VyaXR5ZGF0YS5uZXQuZWMvd3AtY29udGVudC9kb3dubG9hZHMvTm9ybWF0aXZhcy9QX2RlX0Nl
+cnRpZmljYWRvcy9Qb2xpdGljYXMgZGUgQ2VydGlmaWNhZG8gUGVyc29uYSBOYXR1cmFsLnBkZjAd
+BgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwggIPBgNVHR8EggIGMIICAjCB3qA6oDiGNmh0
+dHA6Ly9jcmwxLnNlY3VyaXR5ZGF0YS5uZXQuZWMvc3ViY2EyY3JsMS9jcmxmaWxlLmNybKKBn6SB
+nDCBmTE5MDcGA1UEAwwwQVVUT1JJREFEIERFIENFUlRJRklDQUNJT04gU1VCQ0EtMiBTRUNVUklU
+WSBEQVRBMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5GT1JNQUNJT04x
+HTAbBgNVBAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMQswCQYDVQQGEwJFQzA8oDqgOIY2aHR0cDov
+L2NybDIuc2VjdXJpdHlkYXRhLm5ldC5lYy9zdWJjYTJjcmwyL2NybGZpbGUuY3JsMIHgoIHdoIHa
+hoHXaHR0cHM6Ly9wb3J0YWwtb3BlcmFkb3IyLnNlY3VyaXR5ZGF0YS5uZXQuZWMvZWpiY2EvcHVi
+bGljd2ViL3dlYmRpc3QvY2VydGRpc3Q/Y21kPWNybCZpc3N1ZXI9Q049QVVUT1JJREFEIERFIENF
+UlRJRklDQUNJT04gU1VCQ0EtMiBTRUNVUklUWSBEQVRBLE9VPUVOVElEQUQgREUgQ0VSVElGSUNB
+Q0lPTiBERSBJTkZPUk1BQ0lPTixPPVNFQ1VSSVRZIERBVEEgUy5BLiAyLEM9RUMwHQYDVR0OBBYE
+FJQygL3bwdmJvdykflhwSh4Hm+LhMCsGA1UdEAQkMCKADzIwMjUwNTAzMjI0MjQ4WoEPMjAyNjA1
+MDMyMjQyNDhaMAsGA1UdDwQEAwIF4DAaBgorBgEEAYKmcgMBBAwMCjA1NTAwODA3NzQwQAYKKwYB
+BAGCpnIDCQQyDDBMQVRBQ1VOR0EgQ0FCRUNFUkEgQ0FOVE9OQUwgWSBDQVBJVEFMIFBST1ZJTkNJ
+QUwwEQYKKwYBBAGCpnIDIgQDDAEuMCwGCisGAQQBgqZyAwcEHgwcQVYgQ0lWSUxJWkFDSU9OIFNO
+IFkgQ0FMTEUgRzAeBgorBgEEAYKmcgMCBBAMDkRJRUdPIEdFT1ZBTk5ZMB8GCisGAQQBgqZyAyAE
+EQwPMDE1MDAxMDAwMDE0ODI3MBEGCisGAQQBgqZyAyMEAwwBLjATBgorBgEEAYKmcgMhBAUMA1BG
+WDAXBgorBgEEAYKmcgMMBAkMB0VDVUFET1IwFwYKKwYBBAGCpnIDAwQJDAdGQUxDT05JMBgGCisG
+AQQBgqZyAx4ECgwITUFHSVNURVIwHQYKKwYBBAGCpnIDCwQPDA0wNTUwMDgwNzc0MDAxMBEGCisG
+AQQBgqZyAx0EAwwBLjAXBgorBgEEAYKmcgMEBAkMB1BVTkdVSUwwGgYKKwYBBAGCpnIDCAQMDAow
+OTk1OTM0ODI2MA0GCSqGSIb3DQEBCwUAA4ICAQAtBGPuPm/6nMAN4y65bIT8AzQ/61JPLqno+szq
+Hk9dcX9OxBwCh577WWo3CUnqZBpHg1cCIbaECPQh75do5X1Nme7GzHaeGAW3bOY8xKgHBrtAs9rF
+zXGFl+jSHwjGI5MYs5qrSM1OPLnrlC5fuACNfRNaO5GJ4E8kUZeIOy/5TtIP//n5FrKryMVOp1WL
+rzyG0RNBj67S+KY5JGjSO3pi+IJG2BwKxPrAqN5N+1sgus9TLqHC19NGh3dBtp446FqBG9Dchmm8
+Gcgv3ogtFvdRK59BO7n96FK3ExwGGI7HYptp7ROGBOLbIb0/Fo6DbqAUSq7kTY6HG2OSzqtpE9No
+4drN2m4E//098kkuRaTgH9n2zWwmHvGBkOmNJgAIkI8Qr+XCwBfMOZyINuVus2SqTevOtTtqtvB0
+u86pzoWIhj/HiVA+v4V+Qea52f55MA+RbYt0nx33DPPS5peHWqd0v1MzYHX7tb1MBNE85meDBsbp
+9T6JCQte1UM3QxHlCFqVtd8nsxhuyZv/rGV6BUP4uvcxcRrh7sS6AM/TvATB2cu+LrBVsMqwRpEt
+PwgAtlxdyWsrUDr/u+kfq0ysJPZvyRgugE7RQuDHcENpscClxGVzytbHB/m1P1mCT7yD+1dq0YUG
+OfkHQaCkzOyb5lAVpUVG4Ep1e+JjaK0RxAElzg==
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+3QyoMr613u6+NoRVLrTCzNYGZ44UyPqayz3AjheMzTzbf39Ez7Pcd1nR0el0f6omC5yYVuIgOEs5
+wCUyrWDvd1BJeg6kZHJdCrPQD9Kr5XuhDedUV27Sfpr7tvEqCPyEH3hPen0nyEEtYKGuZx7BBJU2
+6NWyxTWR2S+vxdqIy8Hdc+vldIJ/7qujAVdOT19+uqZzxCviI8V+etUFfOIJyIT+/pMQ8G7kphgF
+ZE/yFYHFgXBrhBUfejIIZwafS//7/v3iEEJFisveqbqPZFTXjU2DHxFV616PqsR4YMKhCnqWP2In
+xdPARCvuiBm2zrssAuYe07KWau0EA3tdb85pVQ==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature271459-Object644468"><etsi:QualifyingProperties Target="#Signature271459"><etsi:SignedProperties Id="Signature271459-SignedProperties502195"><etsi:SignedSignatureProperties><etsi:SigningTime>2025-09-22T16:32:43+00:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>UBUXdEA+xV/41eYWqW7/BcoWquI=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>1781055445</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-131771"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura></comprobante>
+</autorizacion>
+')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RideController->consultaRideFactura()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RideController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 21:57:06 --> ErrorException: simplexml_load_string(): Entity: line 7: parser error : XML declaration allowed only at the start of the document
+[Method: POST, Route: api/factura/consulta-ride]
+in APPPATH\Controllers\RideController.php on line 55.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'simplexml_load_string(): Entity: line 7: parser error : XML declaration allowed only at the start of the document', 'C:\\laragon\\www\\api_facturacion\\app\\Controllers\\RideController.php', 55)
+ 2 APPPATH\Controllers\RideController.php(55): simplexml_load_string('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<autorizacion>
+  <estado>AUTORIZADO</estado>
+  <numeroAutorizacion>2209202501055008077400110010010000000158192683812</numeroAutorizacion>
+  <fechaAutorizacion>2025-09-22T11:32:45-05:00</fechaAutorizacion>
+  <ambiente>PRUEBAS</ambiente>
+  <comprobante><?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.1.0"><infoTributaria><ambiente>1</ambiente><tipoEmision>1</tipoEmision><razonSocial>FALCONI PUNGUIL DIEGO GEOVANNY</razonSocial><nombreComercial>DAMISOFT</nombreComercial><ruc>0550080774001</ruc><claveAcceso>2209202501055008077400110010010000000158192683812</claveAcceso><codDoc>01</codDoc><estab>001</estab><ptoEmi>001</ptoEmi><secuencial>000000015</secuencial><dirMatriz>Latacunga</dirMatriz><contribuyenteRimpe>CONTRIBUYENTE RÉGIMEN RIMPE</contribuyenteRimpe></infoTributaria><infoFactura><fechaEmision>22/09/2025</fechaEmision><dirEstablecimiento>Latacunga</dirEstablecimiento><obligadoContabilidad>NO</obligadoContabilidad><tipoIdentificacionComprador>04</tipoIdentificacionComprador><razonSocialComprador>Linda Raquel Chavez Aguilar</razonSocialComprador><identificacionComprador>1805214572001</identificacionComprador><totalSinImpuestos>120</totalSinImpuestos><totalDescuento>0</totalDescuento><totalConImpuestos><totalImpuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><baseImponible>120</baseImponible><valor>18</valor></totalImpuesto></totalConImpuestos><importeTotal>138</importeTotal><moneda>DOLAR</moneda><pagos><pago><formaPago>01</formaPago><total>138</total><plazo>0</plazo><unidadTiempo>dias</unidadTiempo></pago></pagos></infoFactura><detalles><detalle><codigoPrincipal>001</codigoPrincipal><descripcion>Tablet Lenovo - Modelo 1020</descripcion><cantidad>4</cantidad><precioUnitario>30</precioUnitario><descuento>0</descuento><precioTotalSinImpuesto>120</precioTotalSinImpuesto><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>4</codigoPorcentaje><tarifa>15</tarifa><baseImponible>120</baseImponible><valor>18</valor></impuesto></impuestos></detalle></detalles><infoAdicional><campoAdicional nombre="EMAIL">cliente@correo.com</campoAdicional><campoAdicional nombre="DIRECCION">Av. Siempre Viva 123</campoAdicional></infoAdicional><ds:Signature Id="Signature271459" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#">
+<ds:SignedInfo Id="Signature-SignedInfo375709">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference Id="SignedPropertiesID347938" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature271459-SignedProperties502195">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>8NENpnKB91k56J3YsQjo3iyfSwo=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate143582">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>YEq6ejV2bQWZrEB8NrxshqUd2kQ=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-131771" URI="#comprobante">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>XKAXkSdghPXDozu3vsNbJo7STwI=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue478779">
+l+HAJFokcB0xVurNa3n11CU337V7+jPI4mRjmJv0SxEpIyB579iiVQ+5azL44r5XpcPXoXxpbEbQ
+ISf6/FdzMAILkMTLbFzwJa4/1IQWdYcy/j89bPkiR46j1HpET8o50AgPYnWQEmePeJWQ5PDdodwp
+Yu5AKx5JGqyOuOTMQxsrXjOef4Fmu0Pvy00CAwqL/ocvgf3Bpe0jEMtmYyEFWwt20DvKIovc3l7R
+tLmJCBu3GGem0oLMigrcIn0pylyDz5TuykdQm+n0q/iUntLlysy3L+jDUfUhDAxiA3M4WRG+BXJa
+1EqeLb8wKaTZXIXVr/HTHhQTXY8laVwYE8HRsA==
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate143582">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIKyDCCCLCgAwIBAgIEaii/1TANBgkqhkiG9w0BAQsFADCBmTELMAkGA1UEBhMCRUMxHTAbBgNV
+BAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJ
+T04gREUgSU5GT1JNQUNJT04xOTA3BgNVBAMMMEFVVE9SSURBRCBERSBDRVJUSUZJQ0FDSU9OIFNV
+QkNBLTIgU0VDVVJJVFkgREFUQTAeFw0yNTA1MDMyMjQyNDhaFw0yNjA1MDMyMjQyNDhaMIGpMScw
+JQYDVQQDDB5ESUVHTyBHRU9WQU5OWSBGQUxDT05JIFBVTkdVSUwxIDAeBgNVBAUTFzA1NTAwODA3
+NzQtMDMwNTI1MTc1MjQzMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5G
+T1JNQUNJT04xHTAbBgNVBAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMQswCQYDVQQGEwJFQzCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN0MqDK+td7uvjaEVS60wszWBmeOFMj6mss9wI4X
+jM08239/RM+z3HdZ0dHpdH+qJgucmFbiIDhLOcAlMq1g73dQSXoOpGRyXQqz0A/Sq+V7oQ3nVFdu
+0n6a+7bxKgj8hB94T3p9J8hBLWChrmcewQSVNujVssU1kdkvr8XaiMvB3XPr5XSCf+6rowFXTk9f
+frqmc8Qr4iPFfnrVBXziCciE/v6TEPBu5KYYBWRP8hWBxYFwa4QVH3oyCGcGn0v/+/794hBCRYrL
+3qm6j2RU141Ngx8RVetej6rEeGDCoQp6lj9iJ8XTwEQr7ogZts67LALmHtOylmrtBAN7XW/OaVUC
+AwEAAaOCBgQwggYAMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUjLrKEVd4JYAdawpLVb+NrmLd
+vY8wWQYIKwYBBQUHAQEETTBLMEkGCCsGAQUFBzABhj1odHRwOi8vb2NzcGd3LnNlY3VyaXR5ZGF0
+YS5uZXQuZWMvZWpiY2EvcHVibGljd2ViL3N0YXR1cy9vY3NwMCQGA1UdEQQdMBuBGWRpZWdvLmZh
+bGNvbmk5NkBnbWFpbC5jb20wggEGBgNVHSAEgf4wgfswWgYKKwYBBAGCpnICBzBMMEoGCCsGAQUF
+BwICMD4ePABDAGUAcgB0AGkAZgBpAGMAYQBkAG8AIABkAGUAIABQAGUAcgBzAG8AbgBhACAATgBh
+AHQAdQByAGEAbDCBnAYKKwYBBAGCpnICATCBjTCBigYIKwYBBQUHAgEWfmh0dHBzOi8vd3d3LnNl
+Y3VyaXR5ZGF0YS5uZXQuZWMvd3AtY29udGVudC9kb3dubG9hZHMvTm9ybWF0aXZhcy9QX2RlX0Nl
+cnRpZmljYWRvcy9Qb2xpdGljYXMgZGUgQ2VydGlmaWNhZG8gUGVyc29uYSBOYXR1cmFsLnBkZjAd
+BgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwggIPBgNVHR8EggIGMIICAjCB3qA6oDiGNmh0
+dHA6Ly9jcmwxLnNlY3VyaXR5ZGF0YS5uZXQuZWMvc3ViY2EyY3JsMS9jcmxmaWxlLmNybKKBn6SB
+nDCBmTE5MDcGA1UEAwwwQVVUT1JJREFEIERFIENFUlRJRklDQUNJT04gU1VCQ0EtMiBTRUNVUklU
+WSBEQVRBMTAwLgYDVQQLDCdFTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5GT1JNQUNJT04x
+HTAbBgNVBAoMFFNFQ1VSSVRZIERBVEEgUy5BLiAyMQswCQYDVQQGEwJFQzA8oDqgOIY2aHR0cDov
+L2NybDIuc2VjdXJpdHlkYXRhLm5ldC5lYy9zdWJjYTJjcmwyL2NybGZpbGUuY3JsMIHgoIHdoIHa
+hoHXaHR0cHM6Ly9wb3J0YWwtb3BlcmFkb3IyLnNlY3VyaXR5ZGF0YS5uZXQuZWMvZWpiY2EvcHVi
+bGljd2ViL3dlYmRpc3QvY2VydGRpc3Q/Y21kPWNybCZpc3N1ZXI9Q049QVVUT1JJREFEIERFIENF
+UlRJRklDQUNJT04gU1VCQ0EtMiBTRUNVUklUWSBEQVRBLE9VPUVOVElEQUQgREUgQ0VSVElGSUNB
+Q0lPTiBERSBJTkZPUk1BQ0lPTixPPVNFQ1VSSVRZIERBVEEgUy5BLiAyLEM9RUMwHQYDVR0OBBYE
+FJQygL3bwdmJvdykflhwSh4Hm+LhMCsGA1UdEAQkMCKADzIwMjUwNTAzMjI0MjQ4WoEPMjAyNjA1
+MDMyMjQyNDhaMAsGA1UdDwQEAwIF4DAaBgorBgEEAYKmcgMBBAwMCjA1NTAwODA3NzQwQAYKKwYB
+BAGCpnIDCQQyDDBMQVRBQ1VOR0EgQ0FCRUNFUkEgQ0FOVE9OQUwgWSBDQVBJVEFMIFBST1ZJTkNJ
+QUwwEQYKKwYBBAGCpnIDIgQDDAEuMCwGCisGAQQBgqZyAwcEHgwcQVYgQ0lWSUxJWkFDSU9OIFNO
+IFkgQ0FMTEUgRzAeBgorBgEEAYKmcgMCBBAMDkRJRUdPIEdFT1ZBTk5ZMB8GCisGAQQBgqZyAyAE
+EQwPMDE1MDAxMDAwMDE0ODI3MBEGCisGAQQBgqZyAyMEAwwBLjATBgorBgEEAYKmcgMhBAUMA1BG
+WDAXBgorBgEEAYKmcgMMBAkMB0VDVUFET1IwFwYKKwYBBAGCpnIDAwQJDAdGQUxDT05JMBgGCisG
+AQQBgqZyAx4ECgwITUFHSVNURVIwHQYKKwYBBAGCpnIDCwQPDA0wNTUwMDgwNzc0MDAxMBEGCisG
+AQQBgqZyAx0EAwwBLjAXBgorBgEEAYKmcgMEBAkMB1BVTkdVSUwwGgYKKwYBBAGCpnIDCAQMDAow
+OTk1OTM0ODI2MA0GCSqGSIb3DQEBCwUAA4ICAQAtBGPuPm/6nMAN4y65bIT8AzQ/61JPLqno+szq
+Hk9dcX9OxBwCh577WWo3CUnqZBpHg1cCIbaECPQh75do5X1Nme7GzHaeGAW3bOY8xKgHBrtAs9rF
+zXGFl+jSHwjGI5MYs5qrSM1OPLnrlC5fuACNfRNaO5GJ4E8kUZeIOy/5TtIP//n5FrKryMVOp1WL
+rzyG0RNBj67S+KY5JGjSO3pi+IJG2BwKxPrAqN5N+1sgus9TLqHC19NGh3dBtp446FqBG9Dchmm8
+Gcgv3ogtFvdRK59BO7n96FK3ExwGGI7HYptp7ROGBOLbIb0/Fo6DbqAUSq7kTY6HG2OSzqtpE9No
+4drN2m4E//098kkuRaTgH9n2zWwmHvGBkOmNJgAIkI8Qr+XCwBfMOZyINuVus2SqTevOtTtqtvB0
+u86pzoWIhj/HiVA+v4V+Qea52f55MA+RbYt0nx33DPPS5peHWqd0v1MzYHX7tb1MBNE85meDBsbp
+9T6JCQte1UM3QxHlCFqVtd8nsxhuyZv/rGV6BUP4uvcxcRrh7sS6AM/TvATB2cu+LrBVsMqwRpEt
+PwgAtlxdyWsrUDr/u+kfq0ysJPZvyRgugE7RQuDHcENpscClxGVzytbHB/m1P1mCT7yD+1dq0YUG
+OfkHQaCkzOyb5lAVpUVG4Ep1e+JjaK0RxAElzg==
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+3QyoMr613u6+NoRVLrTCzNYGZ44UyPqayz3AjheMzTzbf39Ez7Pcd1nR0el0f6omC5yYVuIgOEs5
+wCUyrWDvd1BJeg6kZHJdCrPQD9Kr5XuhDedUV27Sfpr7tvEqCPyEH3hPen0nyEEtYKGuZx7BBJU2
+6NWyxTWR2S+vxdqIy8Hdc+vldIJ/7qujAVdOT19+uqZzxCviI8V+etUFfOIJyIT+/pMQ8G7kphgF
+ZE/yFYHFgXBrhBUfejIIZwafS//7/v3iEEJFisveqbqPZFTXjU2DHxFV616PqsR4YMKhCnqWP2In
+xdPARCvuiBm2zrssAuYe07KWau0EA3tdb85pVQ==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature271459-Object644468"><etsi:QualifyingProperties Target="#Signature271459"><etsi:SignedProperties Id="Signature271459-SignedProperties502195"><etsi:SignedSignatureProperties><etsi:SigningTime>2025-09-22T16:32:43+00:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>UBUXdEA+xV/41eYWqW7/BcoWquI=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>1781055445</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-131771"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura></comprobante>
+</autorizacion>
+')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RideController->consultaRideFactura()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RideController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

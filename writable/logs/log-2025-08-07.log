@@ -1,0 +1,7 @@
+ERROR - 2025-08-07 21:22:05 --> Ruta del certificado: C:\laragon\www\api_facturacion\public/uploads/6895174e7fa2d_0550080774001.p12
+ERROR - 2025-08-07 21:22:05 --> PASSWORDdiegeofal31051996
+ERROR - 2025-08-07 21:22:05 --> No se pudo leer el certificado: error:0308010C:digital envelope routines::unsupported
+error:0308010C:digital envelope routines::unsupported
+error:0308010C:digital envelope routines::unsupported
+error:0308010C:digital envelope routines::unsupported
+
