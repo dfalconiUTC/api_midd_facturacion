@@ -1,0 +1,97 @@
+CRITICAL - 2025-09-26 17:00:45 --> TypeError: App\Controllers\RideController::generarHtmlRideFactura(): Argument #1 ($xmlObj) must be of type SimpleXMLElement, string given, called in C:\laragon\www\api_facturacion\app\Controllers\RideController.php on line 109
+[Method: POST, Route: api/factura/consulta-ride]
+in APPPATH\Controllers\RideController.php on line 143.
+ 1 APPPATH\Controllers\RideController.php(109): App\Controllers\RideController->generarHtmlRideFactura('{
+    "@attributes": {
+        "id": "comprobante",
+        "version": "1.1.0"
+    },
+    "infoTributaria": {
+        "ambiente": "1",
+        "tipoEmision": "1",
+        "razonSocial": "FALCONI PUNGUIL DIEGO GEOVANNY",
+        "nombreComercial": "DAMISOFT",
+        "ruc": "0550080774001",
+        "claveAcceso": "2209202501055008077400110010010000000158192683812",
+        "codDoc": "01",
+        "estab": "001",
+        "ptoEmi": "001",
+        "secuencial": "000000015",
+        "dirMatriz": "Latacunga",
+        "contribuyenteRimpe": "CONTRIBUYENTE RÉGIMEN RIMPE"
+    },
+    "infoFactura": {
+        "fechaEmision": "22\\/09\\/2025",
+        "dirEstablecimiento": "Latacunga",
+        "obligadoContabilidad": "NO",
+        "tipoIdentificacionComprador": "04",
+        "razonSocialComprador": "Linda Raquel Chavez Aguilar",
+        "identificacionComprador": "1805214572001",
+        "totalSinImpuestos": "120",
+        "totalDescuento": "0",
+        "totalConImpuestos": {
+            "totalImpuesto": {
+                "codigo": "2",
+                "codigoPorcentaje": "4",
+                "baseImponible": "120",
+                "valor": "18"
+            }
+        },
+        "importeTotal": "138",
+        "moneda": "DOLAR",
+        "pagos": {
+            "pago": {
+                "formaPago": "01",
+                "total": "138",
+                "plazo": "0",
+                "unidadTiempo": "dias"
+            }
+        }
+    },
+    "detalles": {
+        "detalle": {
+            "codigoPrincipal": "001",
+            "descripcion": "Tablet Lenovo - Modelo 1020",
+            "cantidad": "4",
+            "precioUnitario": "30",
+            "descuento": "0",
+            "precioTotalSinImpuesto": "120",
+            "impuestos": {
+                "impuesto": {
+                    "codigo": "2",
+                    "codigoPorcentaje": "4",
+                    "tarifa": "15",
+                    "baseImponible": "120",
+                    "valor": "18"
+                }
+            }
+        }
+    },
+    "infoAdicional": {
+        "campoAdicional": [
+            "cliente@correo.com",
+            "Av. Siempre Viva 123"
+        ]
+    },
+    "estado": null,
+    "numeroAutorizacion": null,
+    "fechaAutorizacion": null,
+    "ambiente": null
+}')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RideController->consultaRideFactura()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RideController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-26 22:05:54 --> ErrorException: Trying to access array offset on null
+[Method: POST, Route: api/factura/consulta-ride]
+in APPPATH\Controllers\RideController.php on line 164.
+ 1 APPPATH\Controllers\RideController.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on null', 'C:\\laragon\\www\\api_facturacion\\app\\Controllers\\RideController.php', 164)
+ 2 APPPATH\Controllers\RideController.php(109): App\Controllers\RideController->generarHtmlRideFactura(Object(SimpleXMLElement))
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RideController->consultaRideFactura()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RideController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
