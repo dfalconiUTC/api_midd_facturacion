@@ -7,6 +7,7 @@ use App\Models\ElectronicDocumentModel;
 use CodeIgniter\RESTful\ResourceController;
 use Dompdf\Dompdf; // Importar Dompdf
 use Dompdf\Options;
+use Picqer\Barcode\BarcodeGeneratorPNG;
 
 class RideController extends ResourceController
 {
@@ -88,8 +89,8 @@ class RideController extends ResourceController
 
         libxml_clear_errors();
         // $jsonRespuesta['data']['autorized'] ya contiene tu XML procesado
-// $xmlComprobanteObj contiene el comprobante en SimpleXMLElement
-// $xmlObj contiene la info de autorización
+        // $xmlComprobanteObj contiene el comprobante en SimpleXMLElement
+        // $xmlObj contiene la info de autorización
 
         // Convertimos el XML del comprobante a array si no lo está
         $xmlComprobanteArray = $xmlComprobanteObj;
@@ -136,7 +137,7 @@ class RideController extends ResourceController
         ]);
     }
 
-    private function generarHtmlRideFactura(\SimpleXMLElement $xmlObj): string
+    /*private function generarHtmlRideFactura(\SimpleXMLElement $xmlObj): string
     {
         $infoTributaria = $xmlObj->infoTributaria;
         $infoFactura = $xmlObj->infoFactura;
@@ -215,5 +216,195 @@ class RideController extends ResourceController
         $html .= '</div>';
 
         return $html;
+    }*/
+    private function generarHtmlRideFactura(\SimpleXMLElement $xmlObj): string
+    {
+        $generator = new BarcodeGeneratorPNG();
+        $logoPath = base_url('public/logo/image.png');
+        $infoTributaria = $xmlObj->infoTributaria;
+        $infoFactura = $xmlObj->infoFactura;
+        $detalles = $xmlObj->detalles->detalle;
+        $infoAdicional = $xmlObj->infoAdicional->campoAdicional ?? [];
+        $atributos = $xmlObj->attributes();
+        $barcode = $generator->getBarcode($atributos->numeroAutorizacion, $generator::TYPE_CODE_128);
+        $barcodeBase64 = base64_encode($barcode);
+
+        $html = '
+        <!DOCTYPE html>
+        <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Factura</title>
+                <style>
+                    body { font-family: Arial, Helvetica, sans-serif; font-size: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 10px; }
+                    .detalle-productos th, .detalle-productos td { border: 1px solid #000; padding: 3px 4px; text-align: center; }
+                    .sin-borde-interno { border: 1px solid #000; border-collapse: separate; border-spacing: 0; }
+                    .sin-borde-interno th, .sin-borde-interno td { border: none; padding: 3px 4px; text-align: left; }
+                    .totales { width: 40%; border: 1px solid #000; padding: 10px; font-size: 10px; float: right; }
+                    .totales p { display: flex; justify-content: space-between; margin: 2px 0; }
+                    .clearfix::after { content: ""; display: table; clear: both; }
+                </style>
+            </head>
+            <body>
+                <div class="factura">
+                    <!-- ENCABEZADO -->
+                    <table class="sin-borde-interno" width="100%" style="margin-bottom: 5px; border: 0px solid #000;">
+                        <tr>
+                            <td width="55%" style="vertical-align: top; padding: 3px;">
+                                <div style="text-align: center; margin-bottom: 5px;">
+                                    <img src="' . $logoPath . '" alt="logo" style="max-height:100px; max-width:300px;">
+                                </div>
+                                <br>
+                                <div style="border: 1px solid #000; padding: 5px;">
+                                    <br>
+                                    <h2 style="margin:0; font-size: 14px;">' . $infoTributaria->razonSocial . '</h2>
+                                    <p><b>Dirección Matriz:</b> ' . $infoTributaria->dirMatriz . '<p>
+                                    <p><b>Dirección Sucursal:</b> ' . $infoFactura->dirEstablecimiento . '<p>
+                                    <p><b>Teléfono:</b> (no especificado)<p>
+                                    <p><b>RIMPE:</b> ' . $infoTributaria->contribuyenteRimpe . '<p>
+                                    <p><b>OBLIGADO A LLEVAR CONTABILIDAD:</b> ' . $infoFactura->obligadoContabilidad . '<p>
+                                </div>
+                            </td>
+                            <td width="40%" style="vertical-align: top; border: 1px solid #000; padding: 5px;">
+                                <p><strong>RUC ' . $infoTributaria->ruc . '</strong></p>
+                                <h2 style="margin:0; font-size: 14px;"><strong>FACTURA</strong></h2>
+                                <p>Nº ' . $infoTributaria->estab . '-' . $infoTributaria->ptoEmi . '-' . $infoTributaria->secuencial . '</p>
+                                <p><strong>NÚMERO DE AUTORIZACIÓN</strong></p>
+                                <p style="word-break:break-word;">' . $atributos->numeroAutorizacion . '</p>
+                                <p><strong>FECHA DE AUTORIZACIÓN:</strong> ' . $atributos->fechaAutorizacion . '</p>
+                                <p><strong>AMBIENTE:</strong> PRODUCCIÓN</p>
+                                <p><strong>EMISIÓN:</strong> Normal</p>
+                                <h2 style="margin:0; font-size: 14px;">CLAVE DE ACCESO</h2>
+                                <div style="text-align:center; margin-top:5px;">
+                                    <img src="data:image/png;base64,' . $barcodeBase64 . '" alt="Código de barras" style="max-width:100%; height:30px;">
+                                </div>
+                                <p style="font-size:10px;word-break:break-word;">' . $infoTributaria->claveAcceso . '</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- DATOS DEL COMPRADOR -->
+                    <div class="bloque-fin">
+                        <table class="sin-borde-interno">
+                            <tbody>
+                                <tr>
+                                    <td><strong>RAZON SOCIAL/NOMBRE O APELLIDO:</strong></td>
+                                    <td>' . $infoFactura->razonSocialComprador . '</td>
+                                    <td><strong>IDENTIFICACIÓN:</strong></td>
+                                    <td>' . $infoFactura->identificacionComprador . '</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FECHA DE EMISIÓN:</strong></td>
+                                    <td>' . $infoFactura->fechaEmision . '</td>
+                                    <td><strong>GUÍA DE REMISIÓN:</strong></td>
+                                    <td>(no especificada)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DIRECCIÓN:</strong></td>
+                                    <td>(no especificada)</td>
+                                    <td><strong>E-MAIL:</strong></td>
+                                    <td>' . (isset($infoAdicional[0]) ? $infoAdicional[0] : '(no especificado)') . '</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- DETALLE DE PRODUCTOS -->
+                    <table class="detalle-productos">
+                        <thead>
+                            <tr>
+                                <th>Cod Principal</th>
+                                <th>Cant</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio Unitario</th>
+                                <th>Descuento</th>
+                                <th>Precio Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                        foreach ($detalles as $d) {
+                            $html .= '
+                                <tr>
+                                    <td>' . $d->codigoPrincipal . '</td>
+                                    <td>' . $d->cantidad . '</td>
+                                    <td>' . $d->descripcion . '</td>
+                                    <td>' . $d->descripcion . '</td>
+                                    <td>' . $this->formatNumber($d->precioUnitario) . '</td>
+                                    <td>' . $this->formatNumber($d->descuento) . '</td>
+                                    <td>' . $this->formatNumber($d->precioTotalSinImpuesto) . '</td>
+                                </tr>';
+                        }
+                        $html .= '
+                        </tbody>
+                    </table>
+
+                    <!-- INFORMACIÓN ADICIONAL Y FORMA DE PAGO -->
+                    <div class="bloque-info-fin">
+                        <div style="width:55%; float:left;">
+                            <table class="sin-borde-interno">
+                                <thead>
+                                    <tr><th colspan="2" style="text-align:center;">INFORMACIÓN ADICIONAL</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>APLICACIÓN:</b></td>
+                                        <td>MAKI</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="sin-borde-interno">
+                                <thead>
+                                    <tr><th>FORMA DE PAGO</th><th>VALOR</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>' . $infoFactura->pagos->pago->formaPago . '</td>
+                                        <td>' . $infoFactura->pagos->pago->total . '</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="width: 40%; float: right; border: 1px solid #000; padding: 10px; font-size: 12px;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Subtotal IVA 0%</strong></td>
+                                        <td style="text-align: right;">' . $this->formatNumber($infoFactura->totalSinImpuestos) . '</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Descuento</strong></td>
+                                        <td style="text-align: right;">' . $this->formatNumber($infoFactura->totalDescuento) . '</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>IVA</strong></td>
+                                        <td style="text-align: right;">' . $this->formatNumber($infoFactura->totalConImpuestos->totalImpuesto->valor) . '</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Valor Total</strong></td>
+                                        <td style="text-align: right;"><strong>' . $this->formatNumber($infoFactura->importeTotal) . '</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div style="text-align: center; font-size: 12px; margin-top: 50px;">
+                    <strong>Factura emitida por sistema de DamiSoft</strong>
+                </div>
+            </body>
+        </html>';
+
+        return $html;
     }
+
+    private function formatNumber($num): string
+    {
+        return number_format((float) $num, 2, '.', '');
+    }
+
+
 }

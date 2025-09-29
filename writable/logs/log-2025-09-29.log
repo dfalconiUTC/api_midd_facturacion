@@ -1,0 +1,22 @@
+CRITICAL - 2025-09-29 20:39:24 --> Dompdf\Exception: Parent table not found for table row
+[Method: POST, Route: api/factura/consulta-ride]
+in FCPATH\vendor\dompdf\dompdf\src\FrameReflower\TableRow.php on line 69.
+ 1 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\TableRow->reflow(null)
+ 2 FCPATH\vendor\dompdf\dompdf\src\FrameReflower\TableRowGroup.php(50): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow()
+ 3 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\TableRowGroup->reflow(Object(Dompdf\FrameDecorator\Block))
+ 4 FCPATH\vendor\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 5 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\Block->reflow(Object(Dompdf\FrameDecorator\Block))
+ 6 FCPATH\vendor\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 7 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\Block->reflow(Object(Dompdf\FrameDecorator\Block))
+ 8 FCPATH\vendor\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 9 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\Block->reflow(null)
+10 FCPATH\vendor\dompdf\dompdf\src\FrameReflower\Page.php(141): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow()
+11 FCPATH\vendor\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(915): Dompdf\FrameReflower\Page->reflow(null)
+12 FCPATH\vendor\dompdf\dompdf\src\Dompdf.php(815): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow()
+13 APPPATH\Controllers\RideController.php(119): Dompdf\Dompdf->render()
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RideController->consultaRideFactura()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RideController))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

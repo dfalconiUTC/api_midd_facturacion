@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'e2c6b5d663e2bfab94db5fe403831007ba9a5e53',
+        'reference' => '978d08e07fb4fd48cf263cf877440c0399277886',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'e2c6b5d663e2bfab94db5fe403831007ba9a5e53',
+            'reference' => '978d08e07fb4fd48cf263cf877440c0399277886',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -261,6 +261,15 @@
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'picqer/php-barcode-generator' => array(
+            'pretty_version' => 'v3.2.3',
+            'version' => '3.2.3.0',
+            'reference' => 'fbb1de7454fcc8600133818bc1103abeb86479a4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../picqer/php-barcode-generator',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'predis/predis' => array(
             'pretty_version' => 'v2.4.0',
