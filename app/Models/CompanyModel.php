@@ -17,6 +17,7 @@ class CompanyModel extends Model
         'company_id',
         'sync_api',
         'response_api',
+        'logo',
     ];
     protected $useTimestamps = true;
 }

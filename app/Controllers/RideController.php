@@ -220,7 +220,6 @@ class RideController extends ResourceController
     private function generarHtmlRideFactura(\SimpleXMLElement $xmlObj): string
     {
         $generator = new BarcodeGeneratorPNG();
-        $logoPath = base_url('public/logo/image.png');
         $infoTributaria = $xmlObj->infoTributaria;
         $infoFactura = $xmlObj->infoFactura;
         $detalles = $xmlObj->detalles->detalle;
@@ -228,6 +227,19 @@ class RideController extends ResourceController
         $atributos = $xmlObj->attributes();
         $barcode = $generator->getBarcode($atributos->numeroAutorizacion, $generator::TYPE_CODE_128);
         $barcodeBase64 = base64_encode($barcode);
+        $ruc = (string) $infoTributaria->ruc;
+
+        // 🔹 Valor por defecto (si no encuentra en BD)
+        $logoPath = base_url('public/logo/image.png');
+
+        // 🔹 Consultar en la tabla company
+        $model = new CompanyModel();
+        $company = $model->where('ruc', $ruc)->first();
+
+        if ($company && !empty($company['logo'])) {
+            // Si existe ruta de logo en BD, usar esa
+            $logoPath = base_url($company['logo']);
+        }
 
         $html = '
         <!DOCTYPE html>
@@ -278,7 +290,7 @@ class RideController extends ResourceController
                                 <p><strong>EMISIÓN:</strong> Normal</p>
                                 <h2 style="margin:0; font-size: 14px;">CLAVE DE ACCESO</h2>
                                 <div style="text-align:center; margin-top:5px;">
-                                    <img src="data:image/png;base64,' . $barcodeBase64 . '" alt="Código de barras" style="max-width:100%; height:30px;">
+                                    <img src="data:image/png;base64,' . $barcodeBase64 . '" alt="Código de barras" style="max-width:100%; height:25px;">
                                 </div>
                                 <p style="font-size:10px;word-break:break-word;">' . $infoTributaria->claveAcceso . '</p>
                             </td>
@@ -303,7 +315,7 @@ class RideController extends ResourceController
                                 </tr>
                                 <tr>
                                     <td><strong>DIRECCIÓN:</strong></td>
-                                    <td>(no especificada)</td>
+                                    <td>' . (isset($infoAdicional[1]) ? $infoAdicional[1] : '(no especificado)') . '</td>
                                     <td><strong>E-MAIL:</strong></td>
                                     <td>' . (isset($infoAdicional[0]) ? $infoAdicional[0] : '(no especificado)') . '</td>
                                 </tr>
@@ -351,7 +363,15 @@ class RideController extends ResourceController
                                 <tbody>
                                     <tr>
                                         <td><b>APLICACIÓN:</b></td>
-                                        <td>MAKI</td>
+                                        <td>DAMISOFT</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>EMAIL:</b></td>
+                                        <td>' . (isset($infoAdicional[0]) ? $infoAdicional[0] : '(no especificado)') . '</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>DIRECCIÓN:</b></td>
+                                        <td>' . (isset($infoAdicional[1]) ? $infoAdicional[1] : '(no especificado)') . '</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -359,11 +379,24 @@ class RideController extends ResourceController
                                 <thead>
                                     <tr><th>FORMA DE PAGO</th><th>VALOR</th></tr>
                                 </thead>
-                                <tbody>
+                                <tbody>';
+                                if (isset($infoFactura->pagos->pago)) {
+                                    // Si hay varios pagos, recorremos todos
+                                    foreach ($infoFactura->pagos->pago as $pago) {
+                                        $html .= '
+                                        <tr>
+                                            <td>' . (string)$pago->formaPago . '</td>
+                                            <td>' . $this->formatNumber($pago->total) . '</td>
+                                        </tr>';
+                                    }
+                                } else {
+                                    $html .= '
                                     <tr>
-                                        <td>' . $infoFactura->pagos->pago->formaPago . '</td>
-                                        <td>' . $infoFactura->pagos->pago->total . '</td>
-                                    </tr>
+                                        <td colspan="2">(No especificado)</td>
+                                    </tr>';
+                                }
+
+                                $html .= '
                                 </tbody>
                             </table>
                         </div>

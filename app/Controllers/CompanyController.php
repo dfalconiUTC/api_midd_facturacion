@@ -58,6 +58,29 @@ class CompanyController extends ResourceController
 
         file_put_contents($rutaCompleta, $contenido);
 
+        // ====================================================
+        // Guardar logo localmente (si viene en el body)
+        // ====================================================
+        $logoBase64 = $data['logo'];
+        $contenidoLogo = base64_decode($logoBase64);
+
+        if ($contenidoLogo === false) {
+            return $this->fail('El logo no se pudo decodificar correctamente.');
+        }
+
+        // Carpeta destino: public/logo/{ruc}/
+        $carpetaLogo = FCPATH . 'public/logo/' . $data['ruc'] . '/';
+        if (!is_dir($carpetaLogo)) {
+            mkdir($carpetaLogo, 0777, true);
+        }
+
+        // Guardar como logo.png
+        $rutaCompletaLogo = $carpetaLogo . 'logo.png';
+        file_put_contents($rutaCompletaLogo, $contenidoLogo);
+
+        // Guardamos la ruta relativa para DB
+        $rutaRelativaLogo = 'public/logo/' . $data['ruc'] . '/logo.png';
+
         // 🔹 Guardar en DB (insert/update)
         $model = new CompanyModel();
         $existing = $model->where('ruc', $data['ruc'])->first();
@@ -70,7 +93,8 @@ class CompanyController extends ResourceController
             'certificado_path' => $rutaRelativa,
             'certificado_password' => $data['certificado_password'],
             'sync_api' => $syncApi,
-            'response_api' => json_encode($apiResponse)
+            'response_api' => json_encode($apiResponse),
+            'logo' => $rutaRelativaLogo
         ];
 
         if ($existing) {

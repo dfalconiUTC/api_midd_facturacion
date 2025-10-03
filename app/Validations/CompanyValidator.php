@@ -12,6 +12,7 @@ class CompanyValidator
             'certificado_password' => 'required|string',
             'certificado_base64' => 'required|string',
             'razon_social' => 'permit_empty|string',
+            'logo' => 'required|string',
         ];
     }
 
@@ -33,6 +34,9 @@ class CompanyValidator
             ],
             'certificado_base64' => [
                 'required' => 'El contenido del certificado es obligatorio',
+            ],
+            'logo' => [
+                'required' => 'El logo es obligatorio',
             ]
         ];
     }
