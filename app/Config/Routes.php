@@ -15,4 +15,6 @@ $routes->group('api', function ($routes) {
 
     $routes->post('factura/consulta-ride', 'RideController::consultaRideFactura');
 
+    $routes->post('factura/notificacion-correo', 'CorreoController::envioFactura');
+
 });
